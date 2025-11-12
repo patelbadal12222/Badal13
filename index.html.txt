@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Congratulations on Your Wedding!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+      overflow: hidden;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
+      color: #ff4b5c;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+      animation: fadeInDown 2s ease;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      color: #333;
+      margin-top: 1rem;
+      animation: fadeIn 3s ease;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: #444;
+      margin-top: 1.2rem;
+      text-align: center;
+      width: 80%;
+      animation: fadeInUp 3s ease;
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .hearts {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: #ff4b5c;
+      transform: rotate(45deg);
+      animation: floatHearts 5s linear infinite;
+    }
+
+    .heart::before, .heart::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: #ff4b5c;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes floatHearts {
+      0% {
+        transform: translateY(0) rotate(45deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) rotate(45deg);
+        opacity: 0;
+      }
+    }
+
+    audio {
+      position: absolute;
+      bottom: 20px;
+      width: 300px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hearts"></div>
+
+  <h1>💍 Congratulations, Kunjan & Suhani! 💖</h1>
+  <h2>Wishing you a lifetime of love and happiness</h2>
+  <p>
+    May your days be filled with laughter, your hearts with joy, 
+    and your home with endless love. Wishing you both a beautiful 
+    journey together as you begin this new chapter of life. 💕
+  </p>
+
+  <audio controls autoplay loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/01/audio_76b234b730.mp3?filename=romantic-piano-ambient-11156.mp3" type="audio/mp3">
+  </audio>
+
+  <script>
+    const heartsContainer = document.querySelector('.hearts');
+
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (3 + Math.random() * 3) + 's';
+      heartsContainer.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 6000);
+    }
+
+    setInterval(createHeart, 300);
+  </script>
+
+</body>
+</html>
